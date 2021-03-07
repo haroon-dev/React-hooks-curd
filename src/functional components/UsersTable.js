@@ -18,12 +18,14 @@ const UsersTable = (props) => {
                             <td>{user.username}</td>
                             <td>
                                 <button className="btn btn-success mr-3">Edit</button>
-                                <button className="btn btn-danger">Delete</button>
+                                <button onClick={() => props.deleteUser(user.id)} className="btn btn-danger">Delete</button>
                             </td>
                         </tr>
                     ))
                 ) : (
-                    <strong className="text-danger">No Records Found</strong>
+                    <tr>
+                        <td colSpan="3" className="text-center">No Records Found</td>
+                    </tr>
                 )}
                 
             </tbody>

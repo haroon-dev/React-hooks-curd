@@ -10,12 +10,17 @@ const App= () => {
     {"id": 3, "name": "Clementine Bauch", "username": "Samantha"}
   ];
 
-  const addUser= (user) => {
-    user.id= user.length + 1;
+  const [users, setUsers]= useState(userData);
+
+  const addUser = (user) => {
+    user.id= users.length + 1;
     setUsers([...users, user]);
   }
 
-  const [users, setUsers]= useState(userData);
+  const deleteUser = (id) => {
+      setUsers(users.filter((user) => user.id !== id));
+  }
+
   return (
     <div className="container pt-3">
       <h1 className="text-center mb-5">React Hooks Curd</h1>
@@ -24,7 +29,7 @@ const App= () => {
           <AddUser addUser={addUser}/>
         </div>
         <div className="col-lg-7">
-          <UsersTable users={users} />
+          <UsersTable users={users} deleteUser={deleteUser}/>
         </div>
       </div>
     </div>
